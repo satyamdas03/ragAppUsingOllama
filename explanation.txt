@@ -1,0 +1,22 @@
+in the UI there will be 2 inputs : url and question
+the question will semantic search the url and give us the final answer
+BROAD STEPS:
+1) Load the Data
+2) Create the embeddings and save it in a vector database (faiss)
+3) Implement the RAG
+
+MAIN UNDERSTANDING OF THE CODE METHODOLOGIES
+1) we will load the data from the url using the `WebBaseLoader`
+2) that data is split into small chunks by the `RecursiveCharacterTextSplitter` 
+3) then that data is converting into embeddings using `OllamaEmbeddings` and stored into faiss
+4) the output is parsed using the `StrOutputParser`
+
+# STEP1 
+so, firstly we load the data using the WebBaseLoader where the url will be provided --> using RAG the output will be more accurate
+Loading the data using loader.load() --> split the text using the RecursiveCharacterTextSplitter
+then passing the documents into the spit docs function --> this will split the doc
+
+# STEP2
+Then, Create the embeddings and storing the vectors in the vector store.
+intiating the ollama embeddings function. the function from FAISS automatically convert all the data from the url which got split into chunks
+and convert those into embeddings and state that in FAISS 
