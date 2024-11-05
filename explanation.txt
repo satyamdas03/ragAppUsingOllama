@@ -20,3 +20,9 @@ then passing the documents into the spit docs function --> this will split the d
 Then, Create the embeddings and storing the vectors in the vector store.
 intiating the ollama embeddings function. the function from FAISS automatically convert all the data from the url which got split into chunks
 and convert those into embeddings and state that in FAISS 
+
+# STEP3
+Create a function to call the ollama model. In that we are providing the `Question` --> the user's question and the `Context` --> not all the information from the same page, only the relevant information by semantically searching the page
+
+# STEP4(integrate everything)
+RAG SETUP : this is where we setup everything. Initialising the retriever --> is going to use the question and search the relevant sections in the page. function called --> combine_docs --> when the retriever identifies the relevant sections with respect to the question, combine it together and send it to the LLM. 
