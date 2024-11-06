@@ -11,6 +11,8 @@ MAIN UNDERSTANDING OF THE CODE METHODOLOGIES
 3) then that data is converting into embeddings using `OllamaEmbeddings` and stored into faiss
 4) the output is parsed using the `StrOutputParser`
 
+
+====================== FOR rag.py ========================
 # STEP1 
 so, firstly we load the data using the WebBaseLoader where the url will be provided --> using RAG the output will be more accurate
 Loading the data using loader.load() --> split the text using the RecursiveCharacterTextSplitter
@@ -26,3 +28,16 @@ Create a function to call the ollama model. In that we are providing the `Questi
 
 # STEP4(integrate everything)
 RAG SETUP : this is where we setup everything. Initialising the retriever --> is going to use the question and search the relevant sections in the page. function called --> combine_docs --> when the retriever identifies the relevant sections with respect to the question, combine it together and send it to the LLM. 
+
+# STEP5(setup the RAG) 
+==============================================================
+
+=================== FOR ui.py =========================
+#STEP1 
+ollama pull nomic-embed-text --> mainly used for embedding
+
+#STEP2
+most of the code remains same. We will be using gradio interface, having 2 inputs, one is a url and the other one is the question. And the output is the response from the LLM
+
+#STEP3
+Finally iface.launch() --> go the url and give the necessary link and question, now it will be using the nomic-embed-text to convert all the data from the provided webpage into embeddings and then the question is used to search the whole webpage for relevant information, and then its sent to the LLM and finally we get a response and this is more relevant to that we asked for.
